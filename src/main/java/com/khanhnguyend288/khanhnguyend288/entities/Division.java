@@ -1,5 +1,6 @@
 package com.khanhnguyend288.khanhnguyend288.entities;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,11 +10,11 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
-@Table(name = "Division")
+@Table(name = "divisions")
 @Getter
 @Setter
 @NoArgsConstructor
-
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class Division {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
