@@ -3,7 +3,6 @@ package com.khanhnguyend288.khanhnguyend288.entities;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
@@ -13,7 +12,6 @@ import java.util.Set;
 @Table(name = "cart_items")
 @Getter
 @Setter
-@NoArgsConstructor
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class CartItem {
     @Id

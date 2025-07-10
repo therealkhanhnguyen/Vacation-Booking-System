@@ -4,16 +4,17 @@ package com.khanhnguyend288.khanhnguyend288.entities;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.NotBlank;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 @Entity
 @Table(name = "customers")
 @Getter
 @Setter
-@NoArgsConstructor
+
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class Customer {
     @Id
@@ -30,6 +31,7 @@ public class Customer {
     @Column(name = "address", nullable = false)
     private String address;
 
+    @NotBlank(message = "Postal code is required")
     @Column(name = "postal_code", nullable = false)
     private String postalCode;
 
@@ -46,6 +48,6 @@ public class Customer {
     @JoinColumn(name = "division_id")
     private Division division;
 
-    @OneToMany(mappedBy = "customer")
-    private Set<Cart> carts;
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private Set<Cart> carts = new HashSet<>();
 }

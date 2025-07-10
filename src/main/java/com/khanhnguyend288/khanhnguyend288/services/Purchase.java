@@ -3,11 +3,14 @@ package com.khanhnguyend288.khanhnguyend288.services;
 import com.khanhnguyend288.khanhnguyend288.entities.Cart;
 import com.khanhnguyend288.khanhnguyend288.entities.CartItem;
 import com.khanhnguyend288.khanhnguyend288.entities.Customer;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
+
 public class Purchase {
     private Customer customer;
     private Cart cart;

@@ -25,6 +25,9 @@ public class CheckoutServiceImpl implements CheckoutService {
         // retrieve cart
         Cart cart = purchase.getCart();
 
+        //prevent ID = 0 problem
+        cart.setId(null);
+
         //generate tracking number
         String orderTrackingNumber = generateOrderTrackingNumber();
         cart.setOrderTrackingNumber(orderTrackingNumber);
@@ -33,10 +36,17 @@ public class CheckoutServiceImpl implements CheckoutService {
         Set<CartItem> cartItems = purchase.getCartItems();
         // link cartItem to cart:
         for (CartItem item : cartItems) {
+            item.setId(null); // each cart is new. hopefully.
             item.setCart(cart);
         }
         //populate customer with order
         Customer customer = purchase.getCustomer();
+
+        //  Default empty postal code
+        if (customer.getPostalCode() == null || customer.getPostalCode().isBlank()) {
+            customer.setPostalCode("12345");
+        }
+
         // Link cart to customer
         cart.setCustomer(customer);
         // Attach cart to customer
