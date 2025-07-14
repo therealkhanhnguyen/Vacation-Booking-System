@@ -16,7 +16,9 @@ import java.util.Set;
 @Setter
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+
 public class Customer {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id", nullable = false)
@@ -50,4 +52,6 @@ public class Customer {
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private Set<Cart> carts = new HashSet<>();
+
 }
+
