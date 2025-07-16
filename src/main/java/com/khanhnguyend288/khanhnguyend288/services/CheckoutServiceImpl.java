@@ -36,8 +36,11 @@ public class CheckoutServiceImpl implements CheckoutService {
         Set<CartItem> cartItems = purchase.getCartItems();
         // link cartItem to cart:
         for (CartItem item : cartItems) {
-            item.setId(null); // each cart is new. hopefully.
+//            item.setId(null); // each cart is new. hopefully.
             item.setCart(cart);
+
+            // add each item to the cart’s collection
+            cart.getCartItems().add(item);
         }
         //populate customer with order
         Customer customer = purchase.getCustomer();
