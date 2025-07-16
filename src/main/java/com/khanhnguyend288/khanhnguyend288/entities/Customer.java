@@ -2,6 +2,7 @@ package com.khanhnguyend288.khanhnguyend288.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,10 +32,13 @@ public class Customer {
     private String lastName;
 
     @Column(name = "address", nullable = false)
+    @JsonProperty("address")
     private String address;
 
     @NotBlank(message = "Postal code is required")
     @Column(name = "postal_code", nullable = false)
+    //debug postal code not rendering
+    @JsonProperty("postal_code")
     private String postalCode;
 
     @Column(name = "phone", nullable = false)
