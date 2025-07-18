@@ -6,9 +6,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.validator.constraints.NotBlank;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 @Entity
@@ -44,11 +46,13 @@ public class Customer {
     @Column(name = "phone", nullable = false)
     private String phone;
 
-    @Column(name = "create_date")
-    private LocalDateTime createDate;
+    @CreationTimestamp
+    @Column(name = "create_date", updatable = false, nullable = false)
+    private Date createDate;
 
-    @Column(name = "last_update")
-    private LocalDateTime lastUpdate;
+    @UpdateTimestamp
+    @Column(name = "last_update", nullable = false)
+    private Date lastUpdate;
 
     @ManyToOne
     @JoinColumn(name = "division_id")

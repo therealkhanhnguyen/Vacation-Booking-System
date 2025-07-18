@@ -7,7 +7,7 @@ import com.khanhnguyend288.khanhnguyend288.entities.Division;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 
@@ -34,15 +34,15 @@ public class UserSamples implements CommandLineRunner {
         Division division5 = divisionRepository.findById(35L).orElse(null);
 
         if (customerRepository.count() < 5) {
-
+            Date now = new Date();
             Customer c1 = new Customer();
             c1.setFirstName("Khanh");
             c1.setLastName("Nguyen");
             c1.setAddress("123 Test Street");
             c1.setPhone("555-0000");
             c1.setPostalCode("99999");
-            c1.setCreateDate(LocalDateTime.now());
-            c1.setLastUpdate(LocalDateTime.now());
+//            c1.setCreate_date(now);
+//            c1.setLast_update(now);
             c1.setDivision(division1);
             c1.setCarts(new HashSet<>()); // Prevent null pointer
             customerRepository.save(c1);
@@ -54,8 +54,8 @@ public class UserSamples implements CommandLineRunner {
             c2.setAddress("Stadio SanSiro");
             c2.setPhone("555-1111");
             c2.setPostalCode("12345");
-            c2.setCreateDate(LocalDateTime.now());
-            c2.setLastUpdate(LocalDateTime.now());
+//            c2.setCreate_date(now);
+//            c2.setLast_update(now);
             c2.setDivision(division2);
             c2.setCarts(new HashSet<>());
             customerRepository.save(c2);
@@ -66,8 +66,8 @@ public class UserSamples implements CommandLineRunner {
             c3.setAddress("Estadio Bernabeu");
             c3.setPhone("555-2222");
             c3.setPostalCode("67890");
-            c3.setCreateDate(LocalDateTime.now());
-            c3.setLastUpdate(LocalDateTime.now());
+//            c3.setCreate_date(now);
+//            c3.setLast_update(now);
             c3.setDivision(division3);
             c3.setCarts(new HashSet<>());
             customerRepository.save(c3);
@@ -78,8 +78,8 @@ public class UserSamples implements CommandLineRunner {
             c4.setAddress("Estadio Camp Nou");
             c4.setPhone("555-3333");
             c4.setPostalCode("54321");
-            c4.setCreateDate(LocalDateTime.now());
-            c4.setLastUpdate(LocalDateTime.now());
+//            c4.setCreate_date(now);
+//            c4.setLast_update(now);
             c4.setDivision(division4);
             c4.setCarts(new HashSet<>());
             customerRepository.save(c4);
@@ -90,8 +90,8 @@ public class UserSamples implements CommandLineRunner {
             c5.setAddress("Emirates Stadium");
             c5.setPhone("555-4444");
             c5.setPostalCode("11223");
-            c5.setCreateDate(LocalDateTime.now());
-            c5.setLastUpdate(LocalDateTime.now());
+//            c5.setCreate_date(now);
+//            c5.setLast_update(now);
             c5.setDivision(division5);
             c5.setCarts(new HashSet<>());
             customerRepository.save(c5);

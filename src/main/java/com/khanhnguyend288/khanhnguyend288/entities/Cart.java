@@ -4,9 +4,11 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -35,11 +37,14 @@ public class Cart {
     @Column(name = "order_tracking_number")
     private String orderTrackingNumber;
 
-    @Column(name = "create_date")
-    private LocalDateTime createDate;
 
-    @Column(name = "last_update")
-    private LocalDateTime lastUpdate;
+    @CreationTimestamp
+    @Column(name = "create_date", updatable = false, nullable = false)
+    private Date createDate;
+
+    @UpdateTimestamp
+    @Column(name = "last_update", nullable = false)
+    private Date lastUpdate;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")

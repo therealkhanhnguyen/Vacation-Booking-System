@@ -5,8 +5,10 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -26,11 +28,13 @@ public class Country {
     @Column(name = "country")
     private String countryName;
 
-    @Column(name = "create_date")
-    private LocalDateTime createDate;
+    @CreationTimestamp
+    @Column(name = "create_date", updatable = false, nullable = false)
+    private Date createDate;
 
-    @Column(name = "last_update")
-    private LocalDateTime lastUpdate;
+    @UpdateTimestamp
+    @Column(name = "last_update", nullable = false)
+    private Date lastUpdate;
 
     @OneToMany(mappedBy = "country")
     private Set<Division> divisions;
