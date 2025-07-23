@@ -4,6 +4,7 @@ import com.khanhnguyend288.khanhnguyend288.dao.CustomerRepository;
 import com.khanhnguyend288.khanhnguyend288.entities.Cart;
 import com.khanhnguyend288.khanhnguyend288.entities.CartItem;
 import com.khanhnguyend288.khanhnguyend288.entities.Customer;
+import com.khanhnguyend288.khanhnguyend288.entities.StatusType;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +32,15 @@ public class CheckoutServiceImpl implements CheckoutService {
         //generate tracking number
         String orderTrackingNumber = generateOrderTrackingNumber();
         cart.setOrderTrackingNumber(orderTrackingNumber);
+
+        // ordered not more “pending”
+        cart.setStatus(StatusType.ordered);
+
+        //set the price, party size & status
+
+        cart.setPackagePrice(purchase.getCart().getPackagePrice());
+        cart.setPartySize(purchase.getCart().getPartySize());
+//        cart.setStatus(purchase.getCart().getStatus());
 
         //populate cart item to cart
         Set<CartItem> cartItems = purchase.getCartItems();

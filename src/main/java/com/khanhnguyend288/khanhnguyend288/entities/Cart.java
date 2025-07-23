@@ -1,6 +1,7 @@
 package com.khanhnguyend288.khanhnguyend288.entities;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,12 +25,15 @@ public class Cart {
     @Column(name = "cart_id")
     private Long id;
 
+    @JsonProperty("package_price")
     @Column(name = "package_price", precision = 19, scale = 2)
     private BigDecimal packagePrice;
 
+    @JsonProperty("party_size")
     @Column(name = "party_size")
     private int partySize;
 
+    @JsonProperty("status")
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private StatusType status;
