@@ -22,7 +22,7 @@ backend/
 
 ## 🚀 How to Run
 
-1. Make sure MySQL is running.
+1. Make sure MySQL is running. Data Populate can be found inside front end branch.
 2. Configure `application.properties` inside:
 backend/src/main/resources/application.properties
 Example:
